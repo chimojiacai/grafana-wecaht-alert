@@ -1,8 +1,0 @@
-version: '3'
-
-services:
-    grafana-wechat-alert:
-        image: chimojiacai/grafana-wechat-alert
-        restart: always
-        ports:
-            - 88:88

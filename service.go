@@ -120,9 +120,7 @@ func MsgMarkdown(h *Hook, color string) string {
 	{
        "msgtype": "markdown",
        "markdown": {
-           "content": "<font color=\"%s\">%s</font>\r\n<font color=\"comment\">%s\r\n[点击查看详情](%s)![](%s)</font>",
-            "mentioned_list":["龙","@all"],
-            "mentioned_mobile_list":["13701390306","@all"]
+           "content": "<font color=\"%s\">%s</font>\r\n<font color=\"comment\">%s\r\n[点击查看详情](%s)![](%s)</font>"
        }
   }`, color, h.Title, h.Message, h.RuleUrl, h.ImageUrl)
 }
