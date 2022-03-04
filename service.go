@@ -7,6 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"io/ioutil"
 	"net/http"
+	"strconv"
 	"strings"
 )
 
@@ -40,7 +41,7 @@ const (
 
 // 记录发送次数
 func GetSendCount(c *gin.Context) {
-	_, _ = c.Writer.WriteString("G2WW Server created by Nova Kwok is running! \nParsed & forwarded \" + strconv.Itoa(sentCount) + \" messages to WeChat Work!")
+	_, _ = c.Writer.WriteString("G2WW Server created by Nova Kwok is running! Parsed & forwarded " + strconv.Itoa(sentCount) + " messages to WeChat Work!")
 	return
 }
 

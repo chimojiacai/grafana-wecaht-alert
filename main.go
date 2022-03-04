@@ -17,8 +17,8 @@ var srv *http.Server
 func main() {
 	app := gin.Default()
 	// Server Info
-	app.GET("/", GetSendCount)
-	app.GET("/send", SendMsg)
+	app.POST("/send", SendMsg)
+	app.GET("", GetSendCount)
 	srv = &http.Server{
 		Addr:    "0.0.0.0:88",
 		Handler: app,
