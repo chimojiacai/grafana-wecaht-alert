@@ -1,4 +1,4 @@
-module g2ww
+module alter
 
 go 1.13
 
