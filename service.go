@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-type Hook struct {
+type HookBak struct {
 	DashboardId string `json:"dashboardId"`
 	EvalMatches string `json:"evalMatches"`
 	ImageUrl    string `json:"imageUrl"`
@@ -24,6 +24,27 @@ type Hook struct {
 	State       string `json:"state"`
 	Tags        string `json:"tags"`
 	Title       string `json:"title"`
+}
+
+type Hook struct {
+	EvalMatches []EvalMatches `json:"evalMatches"`
+	ImageURL    string        `json:"imageUrl"`
+	Message     string        `json:"message"`
+	RuleID      int           `json:"ruleId"`
+	RuleName    string        `json:"ruleName"`
+	RuleURL     string        `json:"ruleUrl"`
+	State       string        `json:"state"`
+	Tags        Tags          `json:"tags"`
+	Title       string        `json:"title"`
+}
+
+type EvalMatches struct {
+	Value  int         `json:"value"`
+	Metric string      `json:"metric"`
+	Tags   interface{} `json:"tags"`
+}
+
+type Tags struct {
 }
 
 var sentCount = 0
@@ -57,7 +78,7 @@ func SendMsg(c *gin.Context) {
 	marshal, _ := json.Marshal(h)
 	fmt.Println("接受参数数据：", string(marshal))
 	// 字符串替换
-	h.RuleUrl = strings.ReplaceAll(h.RuleUrl, ":3000", "")
+	h.RuleURL = strings.ReplaceAll(h.RuleURL, ":3000", "")
 	color := ColorGreen
 	if strings.Contains(h.Title, OK) {
 		h.Title = strings.ReplaceAll(h.Title, OK, OKMsg)
@@ -112,7 +133,7 @@ func MsgNews(h *Hook) string {
 			  ]
 			}
 		  }
-		`, h.Title, h.Message, h.RuleUrl, h.ImageUrl)
+		`, h.Title, h.Message, h.RuleURL, h.ImageURL)
 }
 
 // 发送消息类型
@@ -123,5 +144,5 @@ func MsgMarkdown(h *Hook, color string) string {
        "markdown": {
            "content": "<font color=\"%s\">%s</font>\r\n<font color=\"comment\">%s\r\n[点击查看详情](%s)![](%s)</font>"
        }
-  }`, color, h.Title, h.Message, h.RuleUrl, h.ImageUrl)
+  }`, color, h.Title, h.Message, h.RuleURL, h.ImageURL)
 }
