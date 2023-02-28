@@ -1,7 +1,7 @@
 # grafana-wecaht-alert
 grafana 企业微信 报警系统
 ### 介绍
-+ 前提你已经在 [企业微信文档](https://work.weixin.qq.com/api/doc/90000/90136/91770) 申请过账号，也已经配置好配置好key
++ 前提你已经在 [企业微信文档](https://work.weixin.qq.com/api/doc/90000/90136/91770) 申请过账号，也已经配置好key
 ### 打包文件
 ```
     1. export GOPROXY=https://goproxy.io,direct
